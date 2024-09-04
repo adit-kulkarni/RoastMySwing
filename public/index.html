@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roast My Swing</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js"></script>
+    <script>
+        // Your web app's Firebase configuration (update with your Firebase project details)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCMwQFYXRvjGWuVBbFSKHDBM3kkh39nr7M",
+            authDomain: "roastmyswing-c2e76.firebaseapp.com",
+            projectId: "roastmyswing-c2e76",
+            storageBucket: "roastmyswing-c2e76.appspot.com",
+            messagingSenderId: "484693395607",
+            appId: "1:484693395607:web:b3ea7a25ead1b0062781d2",
+            measurementId: "G-B4D8BVDWLV"
+};
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+    </script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-item">Home</div>
+            <div class="navbar-item">Feed</div>
+            <div class="navbar-item">Profile</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Feed Section -->
+        <section id="feed">
+            <h2 class="section-title">Feed</h2>
+            <div id="posts-container" class="grid-container">
+                <!-- Posts will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" style="display:none;">
+            <h2 class="section-title">My Profile</h2>
+            <div id="user-posts-container" class="grid-container">
+                <!-- User posts will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Authentication Section -->
+        <section id="auth" style="display:none;">
+            <div class="auth-section">
+                <h2 class="section-title">Sign Up</h2>
+                <form class="auth-form" id="signup-form">
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+
+                <h2 class="section-title">Log In</h2>
+                <form class="auth-form" id="login-form">
+                    <div class="input-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Log In</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Video Upload Section -->
+        <section id="upload" style="display:none;">
+            <div class="auth-section">
+                <h2 class="section-title">Upload Your Swing</h2>
+                <form id="upload-form">
+                    <div class="input-group">
+                        <label for="feedback-type">Feedback Type</label>
+                        <select id="feedback-type">
+                            <option value="constructive">Constructive</option>
+                            <option value="critical">Critical</option>
+                            <option value="positive">Positive</option>
+                            <option value="roast">Roast</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="video-file">Upload Video</label>
+                        <input type="file" id="video-file" accept="video/*" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Upload</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
